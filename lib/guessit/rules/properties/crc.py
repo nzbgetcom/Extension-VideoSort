@@ -6,20 +6,25 @@ crc and uuid properties
 from rebulk.remodule import re
 
 from rebulk import Rebulk
+from ..common.pattern import is_disabled
 from ..common.validators import seps_surround
 
 
-def crc():
+def crc(config):  # pylint:disable=unused-argument
     """
     Builder for rebulk object.
+
+    :param config: rule configuration
+    :type config: dict
     :return: Created Rebulk object
     :rtype: Rebulk
     """
-    rebulk = Rebulk().regex_defaults(flags=re.IGNORECASE)
+    rebulk = Rebulk(disabled=lambda context: is_disabled(context, 'crc32'))
+    rebulk = rebulk.regex_defaults(flags=re.IGNORECASE)
     rebulk.defaults(validator=seps_surround)
 
     rebulk.regex('(?:[a-fA-F]|[0-9]){8}', name='crc32',
-                 conflict_solver=lambda match, other: match
+                 conflict_solver=lambda match, other: other
                  if other.name in ['episode', 'season']
                  else '__default__')
 
@@ -30,9 +35,9 @@ def crc():
     return rebulk
 
 
-_DIGIT = 0
-_LETTER = 1
-_OTHER = 2
+_digit = 0
+_letter = 1
+_other = 2
 
 _idnum = re.compile(r'(?P<uuid>[a-zA-Z0-9-]{20,})')  # 1.0, (0, 0))
 
@@ -56,18 +61,18 @@ def guess_idnumber(string):
         letter_count = 0
         last_letter = None
 
-        last = _LETTER
+        last = _letter
         for c in result['uuid']:
             if c in '0123456789':
-                ci = _DIGIT
+                ci = _digit
             elif c in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ':
-                ci = _LETTER
+                ci = _letter
                 if c != last_letter:
                     switch_letter_count += 1
                 last_letter = c
                 letter_count += 1
             else:
-                ci = _OTHER
+                ci = _other
 
             if ci != last:
                 switch_count += 1

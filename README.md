@@ -1,5 +1,9 @@
+> **Note:** this repo is a fork of the original github [project](https://github.com/nzbget/VideoSort)
+> made by @hugbug.
+
+
 # VideoSort
-Post-processing script for [NZBGet](http://nzbget.net).
+[Post-processing](https://nzbget.com/documentation/post-processing-scripts/) script for [NZBGet](https://nzbget.com).
 
 This is a script for downloaded TV shows and movies. It uses scene-standard naming conventions to match TV shows and movies and rename/move/sort/organize them as you like.
 
@@ -25,7 +29,7 @@ VideoSort can organize:
 
 ## Installation
 
- - Download the newest version from [releases page](https://github.com/nzbget/VideoSort/releases/latest).
+ - Download the newest version from [releases page](https://github.com/nzbgetcom/Extension-VideoSort/releases).
  - Unpack into pp-scripts directory. Your pp-scripts directory now should have folder "videosort" with subfolder "lib" and file "VideoSort.py";
  - Open settings tab in NZBGet web-interface and define settings for VideoSort;
  - Save changes and restart NZBGet.

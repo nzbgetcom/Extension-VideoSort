@@ -1,3 +1,6 @@
+videosort-9.0:
+  - added compatibility with Python 3.11.x
+
 videosort-8.0:
   - updated guessit library from v1 to v2; this improves analysis in many cases;
   - many code changes in VideoSort to adopt to new API of fully rewritten

@@ -1,26 +1,47 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-date and year properties
+date, week and year properties
 """
+import re
+
 from rebulk import Rebulk, RemoveMatch, Rule
 
-from ..common.date import search_date, valid_year
+from ..common import dash
+from ..common.date import search_date, valid_year, valid_week
+from ..common.pattern import is_disabled
 from ..common.validators import seps_surround
+from ...reutils import build_or_pattern
 
 
-def date():
+def date(config):  # pylint:disable=unused-argument
     """
     Builder for rebulk object.
+
+    :param config: rule configuration
+    :type config: dict
     :return: Created Rebulk object
     :rtype: Rebulk
     """
     rebulk = Rebulk().defaults(validator=seps_surround)
 
     rebulk.regex(r"\d{4}", name="year", formatter=int,
+                 disabled=lambda context: is_disabled(context, 'year'),
+                 conflict_solver=lambda match, other: other
+                 if other.name in ('episode', 'season') and len(other.raw) < len(match.raw)
+                 else '__default__',
                  validator=lambda match: seps_surround(match) and valid_year(match.value))
 
-    def date_functional(string, context):
+    rebulk.regex(build_or_pattern(config.get('week_words')) + r"-?(\d{1,2})",
+                 name="week", formatter=int,
+                 children=True,
+                 flags=re.IGNORECASE, abbreviations=[dash],
+                 conflict_solver=lambda match, other: other
+                 if other.name in ('episode', 'season') and len(other.raw) < len(match.raw)
+                 else '__default__',
+                 validator=lambda match: seps_surround(match) and valid_week(match.value))
+
+    def date_functional(string, context):  # pylint:disable=inconsistent-return-statements
         """
         Search for date in the string and retrieves match
 
@@ -33,8 +54,9 @@ def date():
             return ret[0], ret[1], {'value': ret[2]}
 
     rebulk.functional(date_functional, name="date", properties={'date': [None]},
+                      disabled=lambda context: is_disabled(context, 'date'),
                       conflict_solver=lambda match, other: other
-                      if other.name in ['episode', 'season']
+                      if other.name in ('episode', 'season', 'crc32')
                       else '__default__')
 
     rebulk.rules(KeepMarkedYearInFilepart)
@@ -48,6 +70,9 @@ class KeepMarkedYearInFilepart(Rule):
     """
     priority = 64
     consequence = RemoveMatch
+
+    def enabled(self, context):
+        return not is_disabled(context, 'year')
 
     def when(self, matches, context):
         ret = []

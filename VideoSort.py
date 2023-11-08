@@ -1,8 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # VideoSort post-processing script for NZBGet.
 #
 # Copyright (C) 2013-2020 Andrey Prygunkov <hugbug@users.sourceforge.net>
+# Copyright (C) 2023 Denis <denis@nzbget.com>
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
@@ -34,11 +35,12 @@
 #
 # Info about pp-script:
 # Author: Andrey Prygunkov (nzbget@gmail.com).
-# Web-site: http://nzbget.net/VideoSort.
+# Further modifications by Denis (denis@nzbget.com).
+# Web-site: https://github.com/nzbgetcom/Extension-VideoSort.
 # License: GPLv3 (http://www.gnu.org/licenses/gpl.html).
 # PP-Script Version: 9.0.
 #
-# NOTE: This script requires Python 2.x or 3.x to be installed on your system.
+# NOTE: This script requires Python 3.11.x to be installed on your system.
 
 ##############################################################################
 ### OPTIONS                                                                   ###
@@ -188,8 +190,6 @@
 # %sn, %s.n, %s_n - show name with words separated with spaces, dots
 #                   or underscores (case-adjusted);
 # %sN, %s.N, %s_N - show name (original letter case);
-# %en, %e.n, %e_n - episode name (case-adjusted);
-# %eN, %e.N, %e_N - episode name (original letter case);
 # %y              - year;
 # %decade         - two-digits decade (90, 00, 10);
 # %0decade        - four-digits decade (1990, 2000, 2010).
@@ -199,7 +199,7 @@
 # %0d              - two-digits day (01-31).
 #
 # For a list of common specifiers see option <MoviesFormat>.
-#DatedFormat=%sn/%sn - %en - %y-%0m-%0d
+#DatedFormat=%sn/%sn - %y-%0m-%0d
 
 # Formatting rules for other TV shows.
 #
@@ -273,11 +273,6 @@ import shutil
 import guessit
 import difflib
 
-try:
-    unicode
-except NameError:
-    unicode = str
-
 # Exit codes used by NZBGet
 POSTPROCESS_SUCCESS=93
 POSTPROCESS_NONE=95
@@ -291,12 +286,12 @@ if not 'NZBOP_SCRIPTDIR' in os.environ:
 
 # Check if directory still exist (for post-process again)
 if not os.path.exists(os.environ['NZBPP_DIRECTORY']):
-    print('[INFO] Destination directory %s doesn\'t exist, exiting' % os.environ['NZBPP_DIRECTORY'])
+    print(('[INFO] Destination directory %s doesn\'t exist, exiting' % os.environ['NZBPP_DIRECTORY']))
     sys.exit(POSTPROCESS_NONE)
 
 # Check par and unpack status for errors
 if os.environ['NZBPP_PARSTATUS'] == '1' or os.environ['NZBPP_PARSTATUS'] == '4' or os.environ['NZBPP_UNPACKSTATUS'] == '1':
-    print('[WARNING] Download of "%s" has failed, exiting' % (os.environ['NZBPP_NZBNAME']))
+    print(('[WARNING] Download of "%s" has failed, exiting' % (os.environ['NZBPP_NZBNAME'])))
     sys.exit(POSTPROCESS_NONE)
 
 # Check if all required script config options are present in config file
@@ -307,7 +302,7 @@ required_options = ('NZBPO_MoviesDir', 'NZBPO_SeriesDir', 'NZBPO_DatedDir',
     'NZBPO_TvCategories', 'NZBPO_Preview', 'NZBPO_Verbose')
 for optname in required_options:
     if (not optname.upper() in os.environ):
-        print('[ERROR] Option %s is missing in configuration file. Please check script settings' % optname[6:])
+        print(('[ERROR] Option %s is missing in configuration file. Please check script settings' % optname[6:]))
         sys.exit(POSTPROCESS_ERROR)
 
 # Init script config options
@@ -357,7 +352,7 @@ if preview:
     print('[WARNING] *** PREVIEW MODE ON - NO CHANGES TO FILE SYSTEM ***')
 
 if verbose and force_tv:
-    print('[INFO] Forcing TV sorting (category: %s)' % category)
+    print(('[INFO] Forcing TV sorting (category: %s)' % category))
 
 # List of moved files (source path)
 moved_src_files = []
@@ -368,24 +363,6 @@ moved_dst_files = []
 # Separator character used between file name and opening brace
 # for duplicate files such as "My Movie (2).mkv"
 dupe_separator = ' '
-
-
-class deprecation_support:
-    """Class implementing iterator for deprecation message support"""
-
-    def __init__(self, mapping):
-        self.iter = iter(mapping)
-
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        map_entry = next(self.iter)
-        return map_entry if len(map_entry) >= 3 else list(map_entry) + [None]
-
-    def next(self):
-        return self.__next__()
-
 
 def guess_dupe_separator(format):
     """ Find out a char most suitable as dupe_separator
@@ -423,7 +400,7 @@ def optimized_move(old, new):
     try:
         os.rename(old, new)
     except OSError as ex:
-        print('[DETAIL] Rename failed ({}), performing copy: {}'.format(ex, new))
+        print(('[DETAIL] Rename failed ({}), performing copy: {}'.format(ex, new)))
         shutil.copyfile(old, new)
         os.remove(old)
 
@@ -435,7 +412,7 @@ def rename(old, new):
         if overwrite and new not in moved_dst_files:
             os.remove(new)
             optimized_move(old, new)
-            print('[INFO] Overwrote: %s' % new)
+            print(('[INFO] Overwrote: %s' % new))
         else:
             # rename to filename.(2).ext, filename.(3).ext, etc.
             new = unique_name(new)
@@ -445,7 +422,7 @@ def rename(old, new):
             if not os.path.exists(os.path.dirname(new)):
                 os.makedirs(os.path.dirname(new))
             optimized_move(old, new)
-        print('[INFO] Moved: %s' % new)
+        print(('[INFO] Moved: %s' % new))
     moved_src_files.append(old)
     moved_dst_files.append(new)
     return new
@@ -455,7 +432,7 @@ def move_satellites(videofile, dest):
         and stored in root to the correct dest.
     """
     if verbose:
-        print('Move satellites for %s' % videofile)
+        print(('Move satellites for %s' % videofile))
 
     root = os.path.dirname(videofile)
     destbasenm = os.path.splitext(dest)[0]
@@ -478,10 +455,10 @@ def move_satellites(videofile, dest):
                         subpart = '.' + guess['subtitle_language'][0].alpha2
                     if verbose:
                         if subpart != '':
-                            print('Satellite: %s is a subtitle [%s]' % (filename, guess['subtitle_language'][0]))
+                            print(('Satellite: %s is a subtitle [%s]' % (filename, guess['subtitle_language'][0])))
                         else:
                             # English (or undetermined)
-                            print('Satellite: %s is a subtitle' % filename)
+                            print(('Satellite: %s is a subtitle' % filename))
                 elif (fbase.lower() != base.lower()) and fextlo == '.nfo':
                     # Aggressive match attempt
                     if deep_scan:
@@ -493,13 +470,13 @@ def move_satellites(videofile, dest):
                     old = fpath
                     new = destbasenm + subpart + fext
                     if verbose:
-                        print('Satellite: %s' % os.path.basename(new))
+                        print(('Satellite: %s' % os.path.basename(new)))
                     rename(old, new)
 
 
 def deep_scan_nfo(filename, ratio=deep_scan_ratio):
     if verbose:
-        print('Deep scanning satellite: %s (ratio=%.2f)' % (filename, ratio))
+        print(('Deep scanning satellite: %s (ratio=%.2f)' % (filename, ratio)))
     best_guess = None
     best_ratio = 0.00
     try:
@@ -514,10 +491,10 @@ def deep_scan_nfo(filename, ratio=deep_scan_ratio):
                     diff = difflib.SequenceMatcher(None, word, nzb_name)
                     # Evaluate ratio against threshold and previous matches
                     if verbose:
-                        print('Tested: %s (ratio=%.2f)' % (word, diff.ratio()))
+                        print(('Tested: %s (ratio=%.2f)' % (word, diff.ratio())))
                     if diff.ratio() >= ratio and diff.ratio() > best_ratio:
                         if verbose:
-                            print('Possible match found: %s (ratio=%.2f)' % (word, diff.ratio()))
+                            print(('Possible match found: %s (ratio=%.2f)' % (word, diff.ratio())))
                         best_guess = guess
                         best_ratio = diff.ratio()
             except UnicodeDecodeError:
@@ -525,7 +502,7 @@ def deep_scan_nfo(filename, ratio=deep_scan_ratio):
                 pass
         nfo.close()
     except IOError as e:
-        print('[ERROR] %s' % str(e))
+        print(('[ERROR] %s' % str(e)))
     return best_guess
 
 
@@ -552,10 +529,10 @@ def cleanup_download_dir():
             if not preview or path not in moved_src_files:
                 if not preview:
                     os.remove(path)
-                print('[INFO] Deleted: %s' % path)
+                print(('[INFO] Deleted: %s' % path))
     if not preview:
         shutil.rmtree(download_dir)
-    print('[INFO] Deleted: %s' % download_dir)
+    print(('[INFO] Deleted: %s' % download_dir))
 
 STRIP_AFTER = ('_', '.', '-')
 
@@ -580,34 +557,17 @@ def path_subst(path, mapping):
     newpath = []
     plen = len(path)
     n = 0
-
-    # Sort list of mapping tuples by their first elements. First ascending by element,
-    # then descending by element length.
-    # Preparation to replace elements from longest to shortest in alphabetical order.
-    #
-    # >>> m = [('bb', 4), ('aa', 3), ('b', 6), ('aaa', 2), ('zzzz', 1), ('a', 5)]
-    # >>> m.sort(key=lambda t: t[0])
-    # >>> m
-    # [('a', 5), ('aa', 3), ('aaa', 2), ('b', 6), ('bb', 4), ('zzzz', 1)]
-    # >>> m.sort(key=lambda t: len(t[0]), reverse=True)
-    # >>> m
-    # [('zzzz', 1), ('aaa', 2), ('aa', 3), ('bb', 4), ('a', 5), ('b', 6)]
-    mapping.sort(key=lambda t: t[0])
-    mapping.sort(key=lambda t: len(t[0]), reverse=True)
-
     while n < plen:
         result = path[n]
         if result == '%':
-            for key, value, msg in deprecation_support(mapping):
+            for key, value in mapping:
                 if path.startswith(key, n):
                     n += len(key)-1
                     result = value
-                    if msg:
-                        print('[WARNING] specifier %s is deprecated, %s' % (key, msg))
                     break
         newpath.append(result)
         n += 1
-    return ''.join(map(lambda x: '.'.join(x) if isinstance(x, list) else str(x), newpath))
+    return ''.join(newpath)
 
 def get_titles(name, titleing=False):
     '''
@@ -654,7 +614,7 @@ def titler(p):
     """ title() replacement
         Python's title() fails with Latin-1, so use Unicode detour.
     """
-    if isinstance(p, unicode):
+    if isinstance(p, str):
         return p.title()
     elif gUTF:
         try:
@@ -875,19 +835,23 @@ def add_movies_mapping(guess, mapping):
     # title
     name = guess.get('title', '')
     ttitle, ttitle_two, ttitle_three = get_titles(name, True)
-    title, title_two, title_three = get_titles(name, False)
-    mapping.append(('%title', ttitle))
-    mapping.append(('%.title', ttitle_two))
-    mapping.append(('%_title', ttitle_three))
+    title, title_two, title_three = get_titles(name, True)
+    mapping.append(('%title', title))
+    mapping.append(('%.title', title_two))
+    mapping.append(('%_title', title_three))
 
     # title (short forms)
-    mapping.append(('%t', ttitle))
-    mapping.append(('%.t', ttitle_two))
-    mapping.append(('%_t', ttitle_three))
+    mapping.append(('%t', title))
+    mapping.append(('%.t', title_two))
+    mapping.append(('%_t', title_three))
 
-    mapping.append(('%tT', title))
-    mapping.append(('%t.T', title_two))
-    mapping.append(('%t_T', title_three))
+    mapping.append(('%sn', title))
+    mapping.append(('%s.n', title_two))
+    mapping.append(('%s_n', title_three))
+
+    mapping.append(('%sN', ttitle))
+    mapping.append(('%s.N', ttitle_two))
+    mapping.append(('%s_N', ttitle_three))
 
     # year
     year = str(guess.get('year', ''))
@@ -913,42 +877,22 @@ def add_dated_mapping(guess, mapping):
     mapping.append(('%_title', title_three))
 
     # title (short forms)
-    mapping.append(('%t', title, 'consider using %sn'))
-    mapping.append(('%.t', title_two, 'consider using %s.n'))
-    mapping.append(('%_t', title_three, 'consider using %s_n'))
+    mapping.append(('%t', title))
+    mapping.append(('%.t', title_two))
+    mapping.append(('%_t', title_three))
 
-    # Show name
-    series = guess.get('title', '')
-    show_tname, show_tname_two, show_tname_three = get_titles(series, True)
-    show_name, show_name_two, show_name_three = get_titles(series, False)
-    mapping.append(('%sn', show_tname))
-    mapping.append(('%s.n', show_tname_two))
-    mapping.append(('%s_n', show_tname_three))
-    mapping.append(('%sN', show_name))
-    mapping.append(('%s.N', show_name_two))
-    mapping.append(('%s_N', show_name_three))
+    mapping.append(('%sn', title))
+    mapping.append(('%s.n', title_two))
+    mapping.append(('%s_n', title_three))
 
-    # Some older code at this point stated:
-    # "Guessit doesn't provide episode names for dated tv shows"
-    # but was referring to the invalid field '%desc'
-    # In my researches I couldn't find such a case, but just to be sure
-    ep_title = guess.get('episode_title')
-    if ep_title:
-        ep_tname, ep_tname_two, ep_tname_three = get_titles(ep_title, True)
-        ep_name, ep_name_two, ep_name_three = get_titles(ep_title, False)
-        mapping.append(('%en', ep_tname))
-        mapping.append(('%e.n', ep_tname_two))
-        mapping.append(('%e_n', ep_tname_three))
-        mapping.append(('%eN', ep_name))
-        mapping.append(('%e.N', ep_name_two))
-        mapping.append(('%e_N', ep_name_three))
-    else:
-        mapping.append(('%en', ''))
-        mapping.append(('%e.n', ''))
-        mapping.append(('%e_n', ''))
-        mapping.append(('%eN', ''))
-        mapping.append(('%e.N', ''))
-        mapping.append(('%e_N', ''))
+    mapping.append(('%sN', ttitle))
+    mapping.append(('%s.N', ttitle_two))
+    mapping.append(('%s_N', ttitle_three))
+
+    # Guessit doesn't provide episode names for dated tv shows
+    mapping.append(('%desc', ''))
+    mapping.append(('%.desc', ''))
+    mapping.append(('%_desc', ''))
 
     # date
     date = guess.get('date')
@@ -989,7 +933,7 @@ def deobfuscate_path(filename):
     start = os.path.dirname(download_dir)
     new_name = filename[len(start)+1:]
     if verbose:
-        print('stripped filename: %s' % new_name)
+        print(('stripped filename: %s' % new_name))
 
     parts = os_path_split(new_name)
     if verbose:
@@ -999,13 +943,13 @@ def deobfuscate_path(filename):
     for x in range(0, len(parts)-1):
         fn = parts[x]
         if fn.find('.')==-1 and fn.find('_')==-1 and fn.find(' ')==-1:
-            print('Detected obfuscated directory name %s, removing from guess path' % fn)
+            print(('Detected obfuscated directory name %s, removing from guess path' % fn))
             parts[x] = None
             part_removed += 1
 
     fn = os.path.splitext(parts[len(parts)-1])[0]
     if fn.find('.')==-1 and fn.find('_')==-1 and fn.find(' ')==-1:
-        print('Detected obfuscated filename %s, removing from guess path' % os.path.basename(filename))
+        print(('Detected obfuscated filename %s, removing from guess path' % os.path.basename(filename)))
         parts[len(parts)-1] = '-' + os.path.splitext(filename)[1]
         part_removed += 1
 
@@ -1090,9 +1034,9 @@ def guess_info(filename):
         guessfilename = os.path.join(path, 'T' + tmp_filename)
 
     if verbose:
-        print('Guessing: %s' % guessfilename)
+        print(('Guessing: %s' % guessfilename))
 
-    guess = guessit.api.guessit(unicode(guessfilename), {'allowed_languages': [], 'allowed_countries': []})
+    guess = guessit.api.guessit(str(guessfilename), {'allowed_languages': [], 'allowed_countries': []})
 
     if verbose:
         print(guess)
@@ -1156,7 +1100,7 @@ def guess_info(filename):
         apply_dnzb_headers(guess)
 
     if verbose:
-        print('Type: %s' % guess['vtype'])
+        print(('Type: %s' % guess['vtype']))
 
     if verbose:
         print(guess)
@@ -1167,7 +1111,7 @@ def construct_path(filename):
     """ Parses the filename and generates new name for renaming """
 
     if verbose:
-        print("filename: %s" % filename)
+        print(("filename: %s" % filename))
 
     guess = guess_info(filename)
     type = guess.get('vtype')
@@ -1192,7 +1136,7 @@ def construct_path(filename):
         add_movies_mapping(guess, mapping)
     else:
         if verbose:
-            print('Could not determine video type for %s' % filename)
+            print(('Could not determine video type for %s' % filename))
         return None
 
     if dest_dir == '':
@@ -1208,13 +1152,13 @@ def construct_path(filename):
     sorter = format.replace('\\', '/')
 
     if verbose:
-        print('format: %s' % sorter)
+        print(('format: %s' % sorter))
 
     # Replace elements
     path = path_subst(sorter, mapping)
 
     if verbose:
-        print('path after subst: %s' % path)
+        print(('path after subst: %s' % path))
 
     # Cleanup file name
     old_path = ''
@@ -1239,12 +1183,12 @@ def construct_path(filename):
     path = os.path.normpath(path)
 
     if verbose:
-        print('path after cleanup: %s' % path)
+        print(('path after cleanup: %s' % path))
 
     new_path = os.path.join(dest_dir, path)
 
     if verbose:
-        print('destination path: %s' % new_path)
+        print(('destination path: %s' % new_path))
 
     if filename.upper() == new_path.upper():
         if verbose:
@@ -1273,7 +1217,7 @@ for root, dirs, files in os.walk(download_dir):
 
             # Check minimum file size
             if os.path.getsize(old_path) < min_size:
-                print('[INFO] Skipping small: %s' % old_filename)
+                print(('[INFO] Skipping small: %s' % old_filename))
                 continue
 
             # This is our video file, we should process it
@@ -1281,8 +1225,8 @@ for root, dirs, files in os.walk(download_dir):
 
         except Exception as e:
             errors = True
-            print('[ERROR] Failed: %s' % old_filename)
-            print('[ERROR] %s' % e)
+            print(('[ERROR] Failed: %s' % old_filename))
+            print(('[ERROR] %s' % e))
             traceback.print_exc()
 
 use_nzb_name = prefer_nzb_name and len(video_files) == 1
@@ -1302,8 +1246,8 @@ for old_path in video_files:
 
     except Exception as e:
         errors = True
-        print('[ERROR] Failed: %s' % old_filename)
-        print('[ERROR] %s' % e)
+        print(('[ERROR] Failed: %s' % old_filename))
+        print(('[ERROR] %s' % e))
         traceback.print_exc()
 
 # Inform NZBGet about new destination path
@@ -1317,7 +1261,7 @@ for filename in moved_dst_files:
         finaldir += dir
 
 if finaldir != '':
-    print('[NZB] FINALDIR=%s' % finaldir)
+    print(('[NZB] FINALDIR=%s' % finaldir))
 
 # Cleanup if:
 # 1) files were moved AND
