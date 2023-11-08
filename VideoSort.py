@@ -143,6 +143,8 @@
 # %sn, %s.n, %s_n - show name with words separated with spaces, dots
 #                   or underscores (case-adjusted);
 # %sN, %s.N, %s_N - show name (original letter case);
+# %en, %e.n, %e_n - episode name (case-adjusted);
+# %eN, %e.N, %e_N - episode name (original letter case);
 # %s              - season number (1, 2);
 # %0s             - two-digits season number (01, 02);
 # %e              - episode number (1, 2);
@@ -199,7 +201,7 @@
 # %0d              - two-digits day (01-31).
 #
 # For a list of common specifiers see option <MoviesFormat>.
-#DatedFormat=%sn/%sn - %y-%0m-%0d
+#DatedFormat=%sn/%sn - %en - %y-%0m-%0d
 
 # Formatting rules for other TV shows.
 #
