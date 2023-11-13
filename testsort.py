@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # Test for VideoSort post-processing script for NZBGet.
 #
@@ -102,7 +102,7 @@ def run_test(testobj):
 	if verbose:
 		print('Executing...')
 	sys.stdout.flush()
-	proc = subprocess.Popen(['python', root_dir + '/VideoSort.py'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=os.environ.copy())
+	proc = subprocess.Popen(['python3', root_dir + '/VideoSort.py'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=os.environ.copy())
 	out, err = proc.communicate()
 	out += err
 	ret = proc.returncode

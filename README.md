@@ -1,9 +1,6 @@
 > **Note:** this repo is a fork of the original github [project](https://github.com/nzbget/VideoSort)
 > made by @hugbug.
 
-> **Note:** This script is compatible with python 3.11.x. 
-> If you need compatibility with Python 2.x, then you should look into the original [repository](https://github.com/nzbget/VideoSort).
-
 # VideoSort
 [Post-processing](https://nzbget.com/documentation/post-processing-scripts/) script for [NZBGet](https://nzbget.com).
 
