@@ -273,6 +273,7 @@ import re
 import shutil
 import guessit
 import difflib
+import locale
 
 try:
     unicode
@@ -741,7 +742,7 @@ try:
     if sys.platform == 'darwin':
         gUTF = True
     else:
-        gUTF = locale.getdefaultlocale()[1].lower().find('utf') >= 0
+        gUTF = locale.getlocale()[1] == 'UTF-8'
 except:
     # Incorrect locale implementation, assume the worst
     gUTF = False

@@ -42,6 +42,11 @@ for opt, arg in options:
 	elif opt in ('-t', '--testid'):
 		test_ids.append(arg)
 
+def get_python():
+	if os.name == 'nt':
+		return 'python'
+	return 'python3'
+
 def set_defaults():
 	# NZBGet global options
 	os.environ['NZBOP_SCRIPTDIR'] = 'test'
@@ -102,7 +107,7 @@ def run_test(testobj):
 	if verbose:
 		print('Executing...')
 	sys.stdout.flush()
-	proc = subprocess.Popen(['python3', root_dir + '/VideoSort.py'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=os.environ.copy())
+	proc = subprocess.Popen([get_python(), root_dir + '/VideoSort.py'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=os.environ.copy())
 	out, err = proc.communicate()
 	out += err
 	ret = proc.returncode
@@ -112,12 +117,14 @@ def run_test(testobj):
 	dest = ''
 
 	if ret == 93:
-		for line in out.split(b'\n'):
-			if line.startswith(b'destination path: '):
-				line = line[len(b'destination path: '):]
-				if line.startswith(root_dir.encode()):
-					line = line[len(root_dir.encode()):]
-				dest = line.replace(b'\\', b'/').decode()
+		decoded = out.decode().split('\n')
+		for line in decoded:
+			stripped = line.rstrip()
+			if stripped.startswith('destination path: '):
+				stripped = stripped[len('destination path: '):]
+				if stripped.startswith(root_dir):
+					stripped = stripped[len(root_dir):]
+				dest = stripped.replace('\\', '/')
 		success = dest == output_file and output_file != ''
 
 	if success:
