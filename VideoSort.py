@@ -35,11 +35,11 @@
 # Info about pp-script:
 # Author: Andrey Prygunkov (nzbget@gmail.com).
 # Web-site: http://nzbget.net/VideoSort.
-# Web-site: https://github.com/nzbgetcom/Extension-VideoSort (Python 3.11.x).
+# Web-site: https://github.com/nzbgetcom/Extension-VideoSort (Python 3.9.x).
 # License: GPLv3 (http://www.gnu.org/licenses/gpl.html).
 # PP-Script Version: 9.0.
 #
-# NOTE: This script requires Python 3.11.x to be installed on your system.
+# NOTE: This script requires Python 3.9.x .. 3.11.x to be installed on your system.
 
 ##############################################################################
 ### OPTIONS                                                                ###

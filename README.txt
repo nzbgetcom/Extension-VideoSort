@@ -28,5 +28,6 @@
 #
 # Info about pp-script:
 # Author: Andrey Prygunkov (nzbget@gmail.com).
-# Web-site: https://github.com/nzbgetcom/Extension-VideoSort.
+# Web-site: http://nzbget.net/VideoSort.
+# Web-site: https://github.com/nzbgetcom/Extension-VideoSort (Python 3.9.x).
 # PP-Script Version: see <VideoSort.py>.
