@@ -2,6 +2,7 @@ videosort-9.0:
   - updated guessit from 2.1.4 to 3.7.1
   - updated babelfish from 0.5.5-dev to 0.6.0
   - updated rebulk from 0.9.0 to 3.2.0
+  - updated dateutil from 2.3 to 2.8.2
 
 videosort-8.0:
   - updated guessit library from v1 to v2; this improves analysis in many cases;
