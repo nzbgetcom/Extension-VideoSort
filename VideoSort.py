@@ -1075,6 +1075,14 @@ def apply_dnzb_headers(guess):
     if verbose and dnzb_used:
         print(guess)
 
+def year_and_season_equal(guess):
+    return guess.get('season') and guess.get('year') and guess.get('season') == guess.get('year')
+
+def is_movie(guess):
+    has_no_episode = guess.get('type') == 'episode' and guess.get('episode') == None
+    is_movie = has_no_episode or year_and_season_equal(guess) and guess.get('release_group') != 'CHD'
+    return is_movie
+
 def guess_info(filename):
     """ Parses the filename using guessit-library """
 
@@ -1110,9 +1118,8 @@ def guess_info(filename):
     # fix some strange guessit guessing:
     # if guessit doesn't find a year in the file name it thinks it is episode,
     # but we prefer it to be handled as movie instead
-    year_and_season_equal = guess.get('season') and guess.get('year') and guess.get('season') == guess.get('year')
-    must_be_movie = guess.get('type') == 'episode' and guess.get('episode') == None or (guess.get('episode') and year_and_season_equal) and guess.get('release_group') != 'CHD'
-    if must_be_movie:
+
+    if is_movie(guess):
         guess['type'] = 'movie'
         if verbose:
             print('episode without episode-number is a movie')
@@ -1125,7 +1132,7 @@ def guess_info(filename):
             print('treat parts as episodes')
 
     # add season number if not present
-    if guess['type'] == 'episode' and (guess.get('season') == None or year_and_season_equal):
+    if guess['type'] == 'episode' and (guess.get('season') == None or year_and_season_equal(guess)):
         guess['season'] = 1
         if verbose:
             print('force season 1')
