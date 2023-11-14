@@ -52,10 +52,10 @@ def set_defaults():
 	os.environ['NZBOP_SCRIPTDIR'] = 'test'
 
 	# script options
-	os.environ['NZBPO_MOVIESDIR'] = root_dir + '/movies'
-	os.environ['NZBPO_SERIESDIR'] = root_dir + '/series'
-	os.environ['NZBPO_DATEDDIR'] = root_dir + '/dated'
-	os.environ['NZBPO_OTHERTVDIR'] = root_dir + '/tv'
+	os.environ['NZBPO_MOVIESDIR'] = os.path.join(root_dir, 'movies')
+	os.environ['NZBPO_SERIESDIR'] = os.path.join(root_dir, 'series')
+	os.environ['NZBPO_DATEDDIR'] = os.path.join(root_dir, 'dated')
+	os.environ['NZBPO_OTHERTVDIR'] = os.path.join(root_dir, 'tv')
 	os.environ['NZBPO_VIDEOEXTENSIONS'] = '.mkv,.mp4,.avi'
 	os.environ['NZBPO_SATELLITEEXTENSIONS'] = '.srt'
 	os.environ['NZBPO_MULTIPLEEPISODES'] = 'list'
