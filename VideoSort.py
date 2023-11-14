@@ -796,7 +796,7 @@ def add_common_mapping(old_filename, guess, mapping):
     mapping.append(('%_cAt', category_name_three))
 
     # Video information
-    mapping.append(('%qf', guess.get('format', '')))
+    mapping.append(('%qf', guess.get('source', '')))
     mapping.append(('%qss', guess.get('screen_size', '')))
     mapping.append(('%qvc', guess.get('video_codec', '')))
     mapping.append(('%qac', guess.get('audio_codec', '')))
