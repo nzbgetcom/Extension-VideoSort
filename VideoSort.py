@@ -1124,7 +1124,7 @@ def guess_info(filename):
             print('treat parts as episodes')
 
     # add season number if not present
-    if guess['type'] == 'episode' and (guess.get('season') == None):
+    if guess['type'] == 'episode' and (guess.get('season') == None or guess.get('season') == guess.get('year')):
         guess['season'] = 1
         if verbose:
             print('force season 1')
