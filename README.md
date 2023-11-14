@@ -82,6 +82,8 @@ These specifiers can be used with all three types of supported video files:
  - %qac - audio codec (DTS);
  - %qah - audio channels (5.1);
  - %qrg - release group;
+ - %cat - to refer to category ("%.cat", etc.);
+ - %up - to navigate to parent directory;
  - {{text}} - uppercase the text;
  - {TEXT} - lowercase the text;
 
