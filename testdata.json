@@ -189,7 +189,7 @@
   {
     "id": "multi-cat",
     "INPUTFILE": "Bohemian.Rhapsody.2018.REMUX.2160p.(10bit).BluRay.UHD.HDR.HEVC.TrueHD.DTS-HD.MA.7.1-LEGi0N.mkv",
-    "OUTPUTFILE": "/movies/Bohemian Rhapsody (2018) BluRay-4K h265 7.1 TrueHD.DTS.mkv",
-    "NZBPO_MOVIESFORMAT": "/movies/%t (%y) %qf-%qss %qvc %qah %qac.%ext"
+    "OUTPUTFILE": "/movies/Bohemian Rhapsody (2018) Ultra HD Blu-ray-2160p H.265 7.1 Dolby TrueHD.DTS-HD.mkv",
+    "NZBPO_MOVIESFORMAT": "%t (%y) %qf-%qss %qvc %qah %qac.%ext"
   }
 ]

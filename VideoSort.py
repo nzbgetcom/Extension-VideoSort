@@ -1110,9 +1110,9 @@ def guess_info(filename):
     # fix some strange guessit guessing:
     # if guessit doesn't find a year in the file name it thinks it is episode,
     # but we prefer it to be handled as movie instead
-    if guess.get('type') == 'episode' and guess.get('episode', '') == '':
+    year_and_season_equal = guess.get('season') == guess.get('year')
+    if guess.get('type') == 'episode' and guess.get('episode') == None:
         guess['type'] = 'movie'
-        guess['year'] = '1900'
         if verbose:
             print('episode without episode-number is a movie')
 
@@ -1124,7 +1124,7 @@ def guess_info(filename):
             print('treat parts as episodes')
 
     # add season number if not present
-    if guess['type'] == 'episode' and (guess.get('season') == None or guess.get('season') == guess.get('year')):
+    if guess['type'] == 'episode' and (guess.get('season') == None or year_and_season_equal):
         guess['season'] = 1
         if verbose:
             print('force season 1')
