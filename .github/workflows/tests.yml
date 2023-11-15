@@ -17,11 +17,31 @@ jobs:
 
     - name: Run tests
       run: |
-        TEST_RESULTS=/tmp/videosort-test-results.txt
-        for PYTHON_VERSION in 2 3 4 5 6 7 8 9 10 11 12; do
+        # python versions for running tests
+        PYTHON_VERSIONS="2 3 4 5 6 7 8 9 10 11 12"
+        # python version that does not allow failed tests
+        SUPPORTED_PYTHON_VERSIONS="9 10 11 12"
+        # test script name
+        TEST_SCRIPT=testsort.py
+        
+        TEST_RESULTS=/tmp/test-results.txt
+        TOTAL_FAILED=0
+        TOTAL_SUCCESS=0
+        for PYTHON_VERSION in $PYTHON_VERSIONS; do
             docker pull python:3.$PYTHON_VERSION >/dev/null
             docker run python:3.$PYTHON_VERSION python --version
-            docker run -v ./:/videosort python:3.$PYTHON_VERSION python /videosort/testsort.py > $TEST_RESULTS
-            printf "SUCCESS: %2s FAILED: %2s\n" $(cat $TEST_RESULTS | grep SUCCESS | wc -l) $(cat $TEST_RESULTS | grep FAILED | wc -l)
+            docker run -v ./:/tests python:3.$PYTHON_VERSION python /tests/$TEST_SCRIPT > $TEST_RESULTS
+            FAILED=$(cat $TEST_RESULTS | grep FAILED | wc -l)
+            SUCCESS=$(cat $TEST_RESULTS | grep SUCCESS | wc -l)
+            printf "SUCCESS: %2s FAILED: %2s\n" $SUCCESS $FAILED
+            for SUPPORTED_PYTHON_VERSION in $SUPPORTED_PYTHON_VERSIONS; do
+                if [ $PYTHON_VERSION == $SUPPORTED_PYTHON_VERSION ]; then
+                    TOTAL_FAILED=$((TOTAL_FAILED+$FAILED))
+                    TOTAL_SUCCESS=$((TOTAL_SUCCESS+$SUCCESS))
+                fi
+            done
         done
         rm $TEST_RESULTS
+        
+        printf "\nTotals for supported python versions (%s): SUCCESS: %2s FAILED: %2s\n" "$SUPPORTED_PYTHON_VERSIONS" $TOTAL_SUCCESS $TOTAL_FAILED
+        exit $TOTAL_FAILED
