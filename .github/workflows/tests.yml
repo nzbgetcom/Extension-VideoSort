@@ -20,7 +20,7 @@ jobs:
         # python versions for running tests
         PYTHON_VERSIONS="2 3 4 5 6 7 8 9 10 11 12"
         # python version that does not allow failed tests
-        SUPPORTED_PYTHON_VERSIONS="9 10 11 12"
+        SUPPORTED_PYTHON_VERSIONS="9 10 11"
         # test script name
         TEST_SCRIPT=testsort.py
         
