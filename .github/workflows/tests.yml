@@ -18,9 +18,9 @@ jobs:
     - name: Run tests
       run: |
         # python versions for running tests
-        PYTHON_VERSIONS="2 3 4 5 6 7 8 9 10 11 12"
+        PYTHON_VERSIONS="3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9 3.10 3.11 3.12"
         # python version that does not allow failed tests
-        SUPPORTED_PYTHON_VERSIONS="9 10 11"
+        SUPPORTED_PYTHON_VERSIONS="3.9 3.10 3.11"
         # test script name
         TEST_SCRIPT=testsort.py
         
@@ -30,7 +30,7 @@ jobs:
         for PYTHON_VERSION in $PYTHON_VERSIONS; do
             docker pull python:3.$PYTHON_VERSION >/dev/null
             docker run python:3.$PYTHON_VERSION python --version
-            docker run -v ./:/tests python:3.$PYTHON_VERSION python /tests/$TEST_SCRIPT > $TEST_RESULTS
+            docker run -v ./:/tests python:$PYTHON_VERSION python /tests/$TEST_SCRIPT > $TEST_RESULTS
             FAILED=$(cat $TEST_RESULTS | grep FAILED | wc -l)
             SUCCESS=$(cat $TEST_RESULTS | grep SUCCESS | wc -l)
             printf "SUCCESS: %2s FAILED: %2s\n" $SUCCESS $FAILED
