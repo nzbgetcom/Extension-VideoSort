@@ -28,8 +28,8 @@ jobs:
         TOTAL_FAILED=0
         TOTAL_SUCCESS=0
         for PYTHON_VERSION in $PYTHON_VERSIONS; do
-            docker pull python:3.$PYTHON_VERSION >/dev/null
-            docker run python:3.$PYTHON_VERSION python --version
+            docker pull python:$PYTHON_VERSION >/dev/null
+            docker run python:$PYTHON_VERSION python --version
             docker run -v ./:/tests python:$PYTHON_VERSION python /tests/$TEST_SCRIPT > $TEST_RESULTS
             FAILED=$(cat $TEST_RESULTS | grep FAILED | wc -l)
             SUCCESS=$(cat $TEST_RESULTS | grep SUCCESS | wc -l)
