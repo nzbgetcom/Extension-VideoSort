@@ -1,16 +1,13 @@
 > **Note:** this repo is a fork of the original github [project](https://github.com/nzbget/VideoSort)
 > made by @hugbug.
 
-> **Note:** this script works with python 3.9.x .. 3.11.x versions.
-> The script cannot work with python 3.12.x, 
-> because in this version was removed [imp](https://docs.python.org/3.4/library/imp.html#module-imp), 
+> **Note:** this script works with Python 3.9.x .. 3.11.x versions.
 
+> **Note:** if you need Python 3.9.x and below support please use [v8.1](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v8.1) release.
 
-> which is a dependency of [bablefish](https://pypi.org/project/babelfish/) which still uses pkg_resources.py.
-[Here](https://github.com/nzbgetcom/nzbget/discussions/56) you can discuss problems with different versions of Python.
+> **Note:** if you need Python 2.x support please use [v8](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v8.0) release.
 
-> **Note:** If you need support for older versions of python, you can try your luck with older [releases](https://github.com/nzbget/VideoSort/).
-
+> **Note:** [Here](https://github.com/nzbgetcom/nzbget/discussions/56) you can discuss problems with different versions of Python.
 
 # VideoSort
 [Post-processing](https://nzbget.com/documentation/post-processing-scripts/) script for [NZBGet](https://nzbget.com).
