@@ -97,4 +97,10 @@ These specifiers can be used with all three types of supported video files:
 
 Credits
 -------
-The script relies on python library "guessit" (http://guessit.readthedocs.org) to extract information from file names and includes portions of code from "SABnzbd+" (http://sabnzbd.org).
+The script relies on python libraries:
+
+- [GuessIt 3.7.1](http://guessit.readthedocs.org) to extract information from file names and includes portions of code from "SABnzbd+" (https://sabnzbd.org/).
+- [BabelFish 0.6.0](https://github.com/Diaoul/babelfish)
+- [ReBulk 3.2.0](https://github.com/Toilal/rebulk/)
+- [dateutil 2.8.2](https://github.com/dateutil/dateutil)
+- [Six 1.16](https://github.com/benjaminp/six)
