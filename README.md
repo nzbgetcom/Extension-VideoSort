@@ -1,7 +1,7 @@
 > **Note:** this repo is a fork of the original github [project](https://github.com/nzbget/VideoSort)
 > made by @hugbug.
 
-> **Note:** this script works with Python 3.9.x .. 3.11.x versions.
+> **Note:** this script works with Python 3.9.x and above versions.
 
 > **Note:** if you need Python 3.9.x and below support please use [v8.1](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v8.1) release.
 

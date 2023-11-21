@@ -13,7 +13,7 @@ The package resource API is designed to work with normal filesystem packages,
 method.
 """
 
-import sys, os, zipimport, time, re, imp, types
+import sys, os, zipimport, time, re, importlib, types
 #PY3: from urlparse import urlparse, urlunparse
 
 #PY3:
@@ -1642,7 +1642,7 @@ class ImpWrapper:
         else:
             path = [self.path]
         try:
-            file, filename, etc = imp.find_module(subname, path)
+            file, filename, etc = importlib.util.find_spec(subname, path)
         except ImportError:
             return None
         return ImpLoader(file, filename, etc)
@@ -1658,7 +1658,7 @@ class ImpLoader:
 
     def load_module(self, fullname):
         try:
-            mod = imp.load_module(fullname, self.file, self.filename, self.etc)
+            mod = importlib.util.find_spec(fullname, self.file, self.filename, self.etc)
         finally:
             if self.file: self.file.close()
         # Note: we don't set __loader__ because we want the module to look

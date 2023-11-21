@@ -39,7 +39,7 @@
 # License: GPLv3 (http://www.gnu.org/licenses/gpl.html).
 # PP-Script Version: 9.0.
 #
-# NOTE: This script requires Python 3.9.x .. 3.11.x to be installed on your system.
+# NOTE: This script requires Python 3.9.x and above to be installed on your system.
 
 ##############################################################################
 ### OPTIONS                                                                ###
@@ -477,10 +477,10 @@ def move_satellites(videofile, dest):
                     if guess and 'subtitle_language' in guess:
                         fbase = fbase[:fbase.rfind('.')]
                         # Use alpha2 subtitle language from GuessIt (en, es, de, etc.)
-                        subpart = '.' + guess['subtitle_language'][0].alpha2
+                        subpart = '.' + guess['subtitle_language'].alpha2
                     if verbose:
                         if subpart != '':
-                            print('Satellite: %s is a subtitle [%s]' % (filename, guess['subtitle_language'][0]))
+                            print('Satellite: %s is a subtitle [%s]' % (filename, guess['subtitle_language']))
                         else:
                             # English (or undetermined)
                             print('Satellite: %s is a subtitle' % filename)

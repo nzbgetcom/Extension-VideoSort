@@ -21,7 +21,6 @@
 import sys
 from os.path import dirname
 import os
-import traceback
 import shutil
 import subprocess
 import json
