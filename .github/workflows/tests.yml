@@ -22,7 +22,7 @@ jobs:
         # python version that does not allow failed tests
         SUPPORTED_PYTHON_VERSIONS="3.9 3.10 3.11 3.12"
         # test script name
-        TEST_SCRIPT=tests.py
+        TEST_SCRIPT=testsort.py
         # debug
         DEBUG=false
 
