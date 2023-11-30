@@ -1,3 +1,8 @@
+videosort-9.1:
+  - added Python3.8.x and above support
+  - added guessit dependencies: zipp 3.17 and importlib_resources 6.1.1
+  - updated links
+
 videosort-9.0:
   - added Python3.9.x and above support
   - updated guessit from 2.1.4 to 3.7.1

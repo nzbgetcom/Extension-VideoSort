@@ -15,7 +15,7 @@
 # GNU Lesser General Public License for more details.
 #
 # You should have received a copy of the GNU Lesser General Public License
-# along with the program.  If not, see <http://www.gnu.org/licenses/>.
+# along with the program.  If not, see <https://www.gnu.org/licenses/>.
 #
 
 
@@ -35,11 +35,11 @@
 # Info about pp-script:
 # Author: Andrey Prygunkov (nzbget@gmail.com).
 # Web-site: http://nzbget.net/VideoSort.
-# Web-site: https://github.com/nzbgetcom/Extension-VideoSort (Python 3.9.x).
+# Web-site: https://github.com/nzbgetcom/Extension-VideoSort (Python 3.8.x).
 # License: GPLv3 (http://www.gnu.org/licenses/gpl.html).
 # PP-Script Version: 9.0.
 #
-# NOTE: This script requires Python 3.9.x and above to be installed on your system.
+# NOTE: This script requires Python 3.8.x and above to be installed on your system.
 
 ##############################################################################
 ### OPTIONS                                                                ###

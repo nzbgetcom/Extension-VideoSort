@@ -13,7 +13,7 @@
 # GNU Lesser General Public License for more details.
 #
 # You should have received a copy of the GNU Lesser General Public License
-# along with subliminal.  If not, see <http://www.gnu.org/licenses/>.
+# along with subliminal.  If not, see <https://www.gnu.org/licenses/>.
 #
 
 # Sort movies and tv shows.
@@ -24,10 +24,9 @@
 #
 # The script relies on python library "guessit" (https://guessit-io.github.io/guessit/)
 # to extract information from file names and includes portions of code from
-# "SABnzbd+" (http://sabnzbd.org).
+# "SABnzbd+" (https://sabnzbd.org/).
 #
 # Info about pp-script:
 # Author: Andrey Prygunkov (nzbget@gmail.com).
-# Web-site: http://nzbget.net/VideoSort.
-# Web-site: https://github.com/nzbgetcom/Extension-VideoSort (Python 3.9.x).
+# Web-site: https://github.com/nzbgetcom/Extension-VideoSort (Python 3.8.x).
 # PP-Script Version: see <VideoSort.py>.
