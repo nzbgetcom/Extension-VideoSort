@@ -1,15 +1,11 @@
-videosort-9.1:
-  - added Python3.8.x and above support
-  - added guessit dependencies: zipp 3.17 and importlib_resources 6.1.1
-  - updated links
-
 videosort-9.0:
-  - added Python3.9.x and above support
+  - added Python3.8.x and above support
   - updated guessit from 2.1.4 to 3.7.1
   - updated babelfish from 0.5.5-dev to 0.6.0
   - updated rebulk from 0.9.0 to 3.2.0
   - updated dateutil from 2.3 to 2.8.2
   - updated six from 1.8 to 1.16
+  - added guessit dependencies: zipp 3.17 and importlib_resources 6.1.1
   - fixed tests
 
 videosort-8.0:
