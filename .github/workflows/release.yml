@@ -1,0 +1,14 @@
+name: release
+
+on:
+  push:
+    tags:
+    - "v*"
+
+jobs:
+  release:
+    uses: nzbgetcom/nzbget-extensions/.github/workflows/extension-release.yml@main
+    with:
+      release-file-list: lib/ ChangeLog.txt README.* VideoSort.py
+      release-file-name: videosort
+      release-dir: videosort
