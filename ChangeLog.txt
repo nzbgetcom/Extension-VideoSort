@@ -1,5 +1,7 @@
 videosort-10.0:
-  - migration from file header config definition to manifest.json-based configuration
+  - migration from a file header config definition to a manifest.json-based configuration
+  - works with NZBGet v23 and above
+  - no longer works with NZBGet v22 and below
 
 videosort-9.0:
   - added Python3.8.x and above support
