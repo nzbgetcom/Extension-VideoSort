@@ -1,3 +1,6 @@
+videosort-10.0:
+  - migration from file header config definition to manifest.json-based configuration
+
 videosort-9.0:
   - added Python3.8.x and above support
   - updated guessit from 2.1.4 to 3.7.1

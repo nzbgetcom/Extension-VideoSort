@@ -105,7 +105,7 @@ def run_test(testobj):
 	if verbose:
 		print('Executing...')
 	sys.stdout.flush()
-	proc = subprocess.Popen([get_python(), root_dir + '/VideoSort.py'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=os.environ.copy())
+	proc = subprocess.Popen([get_python(), root_dir + '/main.py'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=os.environ.copy())
 	out, err = proc.communicate()
 	out += err
 	ret = proc.returncode
