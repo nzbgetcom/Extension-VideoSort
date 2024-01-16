@@ -11,4 +11,4 @@ jobs:
     with:
       release-file-list: lib/ ChangeLog.txt README.* main.py manifest.json
       release-file-name: videosort
-      release-dir: videosort
+      release-dir: VideoSort
