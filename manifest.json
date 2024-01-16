@@ -7,7 +7,7 @@
 	"version": "10.0.0",
 	"author": "Andrey Prygunkov (nzbget@gmail.com)",
 	"license": "GNU",
-	"about": "Sort movies and tv shows.",
+	"about": "Sorts movies and tv shows.",
 	"queueEvents": "",
 	"requirements": [
 		"This script requires Python 3.8.x and above to be installed on your system."
