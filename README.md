@@ -1,13 +1,15 @@
 > **Note:** this repo is a fork of the original github [project](https://github.com/nzbget/VideoSort)
 > made by @hugbug.
 
-> **Note:** This script is compatible with NZBGet v23 and above.
-For older versions of NZBGet please use [v9.0](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v9.0) release.
+## NZBGet Versions
+
+- pre-release v23+  [v10.0](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v10.0)
+- stable  v22 [v9.0](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v9.0)
+- legacy  v21 [v9.0](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v9.0)
 
 > **Note:** this script works with Python 3.8.x and above versions.
 If you need Python 3.7.x and below support please use [v8.1](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v8.1) release.
 For Python 2.x support please use [v8](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v8.0) release.
-
 
 # VideoSort
 [Post-processing](https://nzbget.com/documentation/post-processing-scripts/) script for [NZBGet](https://nzbget.com).
