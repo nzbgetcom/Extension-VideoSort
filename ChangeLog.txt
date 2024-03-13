@@ -1,3 +1,6 @@
+videosort-10.1:
+  - fixed regex warnings
+
 videosort-10.0:
   - migration from a file header config definition to a manifest.json-based configuration
   - works with NZBGet v23 and above

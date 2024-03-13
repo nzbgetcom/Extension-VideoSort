@@ -3,9 +3,8 @@
 
 ## NZBGet Versions
 
-- pre-release v23+  [v10.0](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v10.0)
-- stable  v22 [v9.0](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v9.0)
-- legacy  v21 [v9.0](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v9.0)
+- release v23+  [v10.0](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v10.1)
+- legacy v22 [v9.0](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v9.0)
 
 > **Note:** this script works with Python 3.8.x and above versions.
 If you need Python 3.7.x and below support please use [v8.1](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v8.1) release.
