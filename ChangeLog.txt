@@ -1,3 +1,8 @@
+videosort-10.2:
+  - updated the documentation in accordance with guessit doc;
+    Starting with version 3 guessit formats sources of type WEBDL or WEB-DL into Web and BluRay into Blu-ray;
+  - updated `tests` pipeline.
+
 videosort-10.1:
   - fixed regex warnings
 
