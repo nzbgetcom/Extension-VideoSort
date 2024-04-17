@@ -191,5 +191,13 @@
     "INPUTFILE": "Bohemian.Rhapsody.2018.REMUX.2160p.(10bit).BluRay.UHD.HDR.HEVC.TrueHD.DTS-HD.MA.7.1-LEGi0N.mkv",
     "OUTPUTFILE": "/movies/Bohemian Rhapsody (2018) Ultra HD Blu-ray-2160p H.265 7.1 Dolby TrueHD.DTS-HD.mkv",
     "NZBPO_MOVIESFORMAT": "%t (%y) %qf-%qss %qvc %qah %qac.%ext"
+  },
+  {
+    "id": "spec-char",
+    "INPUTFILE": "Shōgun.S01E02E03E04.720p.BluRay.x264-SiNNERS.mkv",
+    "OUTPUTFILE": "/series/Mkv/Shōgun/Season 1/Shōgun - S01E02-E04 - 720p.Blu-ray.mkv",
+    "NZBPO_SERIESFORMAT": "%Ext/%sn %y/Season %s/- %s_n - S%0sE%0e - %en - %qss.%qf.%ext",
+    "NZBPO_MULTIPLEEPISODES": "range",
+    "NZBPO_EPISODESEPARATOR": "-E"
   }
 ]
