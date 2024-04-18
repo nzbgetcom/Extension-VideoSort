@@ -4,7 +4,7 @@
     "homepage": "https://github.com/nzbgetcom/Extension-VideoSort",
     "kind": "POST-PROCESSING",
     "displayName": "Video Sort",
-    "version": "10.2",
+    "version": "10.3",
     "author": "Andrey Prygunkov",
     "license": "GNU",
     "about": "Sorts movies and tv shows.",

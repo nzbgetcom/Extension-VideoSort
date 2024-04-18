@@ -45,12 +45,6 @@ POSTPROCESS_SUCCESS = 93
 POSTPROCESS_NONE = 95
 POSTPROCESS_ERROR = 94
 
-# Check if the script is called from nzbget 11.0 or later
-if not "NZBOP_SCRIPTDIR" in os.environ:
-    print("*** NZBGet post-processing script ***")
-    print("This script is supposed to be called from nzbget (11.0 or later).")
-    sys.exit(POSTPROCESS_ERROR)
-
 # Check if directory still exist (for post-process again)
 if not os.path.exists(os.environ["NZBPP_DIRECTORY"]):
     print(
