@@ -195,8 +195,8 @@
   {
     "id": "spec-char",
     "INPUTFILE": "Shōgun.S01E02E03E04.720p.BluRay.x264-SiNNERS.mkv",
-    "OUTPUTFILE": "/series/Mkv/Shōgun/Season 1/Shōgun - S01E02-E04 - 720p.Blu-ray.mkv",
-    "NZBPO_SERIESFORMAT": "%Ext/%sn %y/Season %s/- %s_n - S%0sE%0e - %en - %qss.%qf.%ext",
+    "OUTPUTFILE": "/series/Shōgun/Season 01/Shōgun - S01E02-E04 - [720p][Blu-ray][SiNNERS].mkv",
+    "NZBPO_SERIESFORMAT": "%sn\\Season %0s\\%sn - S%0sE%0e - %en [%qss][%qf][%qrg]",
     "NZBPO_MULTIPLEEPISODES": "range",
     "NZBPO_EPISODESEPARATOR": "-E"
   }
