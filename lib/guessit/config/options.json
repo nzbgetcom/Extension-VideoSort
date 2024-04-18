@@ -516,7 +516,7 @@
         "Hardcoded Subtitles": ["HC", "vost"],
         "Standard Dynamic Range": {"string": "SDR", "tags": "uhdbluray-neighbor"},
         "HDR10": {"regex": "HDR(?:10)?", "tags": "uhdbluray-neighbor"},
-        "Dolby Vision": {"regex": "Dolby-?Vision", "tags": "uhdbluray-neighbor"},
+        "Dolby Vision": {"regex": "(?:Dolby-?Vision|DV)", "tags": "uhdbluray-neighbor"},
         "BT.2020": {"regex": "BT-?2020","tags": "uhdbluray-neighbor"},
         "Sample": {"string": "Sample", "tags": ["at-end", "not-a-release-group"]},
         "Extras": [
@@ -617,6 +617,7 @@
       "AMC": "AMC",
       "Amazon Prime": [
         "AMZN",
+        "AMZN-CBR",
         "Amazon",
         "re:Amazon-?Prime"
       ],
@@ -771,6 +772,13 @@
       ],
       "Opto": "OPTO",
       "Oprah Winfrey Network": "OWN",
+      "Paramount+": [
+        "PMTP",
+        "PMNP",
+        "PMT+",
+        "Paramount+",
+        "ParamountPlus"
+      ],
       "PBS": "PBS",
       "PBS Kids": "PBSK",
       "Peacock": [

@@ -1,3 +1,8 @@
+videosort-10.3:
+  - fixed a UnicodeEncodeError exception that occurs when using special characters in names;
+  - updated guessit to 3.8.0;
+  - removed unused test files from libraries.
+
 videosort-10.2:
   - updated the documentation in accordance with guessit doc.
     Starting with version 3 guessit formats sources of type WEBDL or WEB-DL into Web and BluRay into Blu-ray.
