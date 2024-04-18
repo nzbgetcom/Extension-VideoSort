@@ -929,8 +929,8 @@ def is_movie(guess):
     has_no_episode = guess.get("type") == "episode" and guess.get("episode") == None
     is_movie = (
         has_no_episode
-        or year_and_season_equal(guess)
-        and guess.get("release_group") != "CHD"
+        or guess.get("edition")
+        or (year_and_season_equal(guess) and guess.get("type") != "episode")
     )
     return is_movie
 
