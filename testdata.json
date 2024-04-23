@@ -26,7 +26,7 @@
   {
     "id": "up-1",
     "INPUTFILE": "Cartoon.2014.720p.Web-Dl.x264.Aac-IFT.mkv",
-    "OUTPUTFILE": "/Cartoon (2014).mkv",
+    "OUTPUTFILE": "/movies/Cartoon (2014).mkv",
     "NZBPO_MOVIESFORMAT": "%up/%t (%y).%ext",
     "NZBPO_MOVIESDIR": "/movies",
     "NZBPP_CATEGORY": "Kids cartoons"
@@ -129,6 +129,12 @@
     "NZBPO_DNZBHEADERS": "yes",
     "NZBPR__DNZB_PROPERNAME": "Orphan Black",
     "NZBPR__DNZB_EPISODENAME": "Let the Children the Childbearers Toil"
+  },
+  {
+    "id": "series-7",
+    "INPUTFILE": "S04E18.mkv",
+    "OUTPUTFILE": "/movies/S04E18.mkv",
+    "NZBPO_SERIESFORMAT": "%sn/Season %s/%sn - S%0sE%0e - %en"
   },
   {
     "id": "dated-deprecated-t-1",

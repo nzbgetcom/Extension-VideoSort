@@ -1107,11 +1107,12 @@ def construct_path(filename):
     path = path + ext
 
     path = os.path.normpath(path)
+    dest_dir = os.path.normpath(dest_dir)
 
     if verbose:
         print("path after cleanup: %s" % path)
 
-    new_path = os.path.join(dest_dir, path)
+    new_path = os.path.join(dest_dir, *path.split(os.sep))
 
     if verbose:
         print("destination path: %s" % new_path)
