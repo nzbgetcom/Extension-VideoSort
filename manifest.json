@@ -5,6 +5,7 @@
     "kind": "POST-PROCESSING",
     "displayName": "Video Sort",
     "version": "10.3",
+    "nzbgetMinVersion": "23.0",
     "author": "Andrey Prygunkov",
     "license": "GNU",
     "about": "Sorts movies and tv shows.",
