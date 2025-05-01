@@ -1017,7 +1017,11 @@ def guess_info(filename):
         else:
             guess["vtype"] = "movie"
     elif guess["type"] == "episode":
-        guess["vtype"] = "series"
+        date = guess.get("date")
+        if date:
+            guess["vtype"] = "dated"
+        else:
+            guess["vtype"] = "series"
     else:
         guess["vtype"] = guess["type"]
 
