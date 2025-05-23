@@ -1,0 +1,32 @@
+name: extension tasks
+
+on:
+  push:
+    branches:
+    - main
+    tags:
+    - "v*"
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  manifest:
+    uses: nzbgetcom/nzbget-extensions/.github/workflows/manifest.yml@main
+
+  tests:
+    uses: nzbgetcom/nzbget-extensions/.github/workflows/python-tests.yml@main
+    with:
+      python-versions: "3.6 3.7 3.8 3.9 3.10 3.11 3.12"
+      supported-python-versions: "3.8 3.9 3.10 3.11 3.12"
+      test-script: testsort.py
+      debug: true
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [manifest, tests]
+    uses: nzbgetcom/nzbget-extensions/.github/workflows/extension-release.yml@main
+    with:
+      release-file-list: lib/ ChangeLog.txt README.* main.py manifest.json
+      release-file-name: videosort
+      release-dir: VideoSort
