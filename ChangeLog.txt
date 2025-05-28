@@ -1,3 +1,7 @@
+videosort-10.4:
+  - added Channel 5 support
+  - fix: dated episode is identified as series
+
 videosort-10.3:
   - fixed a UnicodeEncodeError exception that occurs when using special characters in names;
   - updated guessit to 3.8.0;
