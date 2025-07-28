@@ -143,6 +143,12 @@
     "NZBPO_SERIESFORMAT": "%Ext/%sn %y/Season %s/- %s_n - S%0sE%0e - %en - %qss.%qf.%ext"
   },  
   {
+    "id": "series-9",
+    "INPUTFILE": "Airport.24-7.S01E08.1080p.Webrip.x264.AAC2.0-MasterCylinder/Airport.24-7.S01E08.1080p.Webrip.x264.AAC2.0-MasterCylinder.mkv",
+    "OUTPUTFILE": "/series/Mkv/Airport 24 7/Season 1/Airport 24 7 - S01E08 - 1080p.Web.mkv",
+    "NZBPO_SERIESFORMAT": "%Ext/%sn %y/Season %s/- %sn - S%0sE%0e - %en - %qss.%qf.%ext"
+  },  
+  {
     "id": "dated-deprecated-t-1",
     "INPUTFILE": "The.Daily.Show.2013.06.27.Tom.Goldstein.HDTV.x264-FQM.mkv",
     "OUTPUTFILE": "/dated/2013-06/The Daily Show - 2013-6-27.mkv",

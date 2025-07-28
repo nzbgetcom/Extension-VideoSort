@@ -969,6 +969,10 @@ def guess_info(filename):
             if verbose:
                 print("use filename as title for recovery")
 
+    # workaround for titles with 2 numbers with a dash between them (which guessit has problems with)
+    if "title" in guess and isinstance(guess["title"], list):
+        guess["title"] = ' '.join(guess["title"])
+    
     # fix some strange guessit guessing:
     # if guessit doesn't find a year in the file name it thinks it is episode,
     # but we prefer it to be handled as movie instead
