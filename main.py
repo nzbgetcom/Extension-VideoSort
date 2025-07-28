@@ -957,7 +957,7 @@ def guess_info(filename):
     guess = guessit.api.guessit(
         unicode(guessfilename), {"allowed_languages": [], "allowed_countries": []}
     )
-    
+
     if verbose:
         print(guess)
 
