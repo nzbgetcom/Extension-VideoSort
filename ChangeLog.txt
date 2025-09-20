@@ -1,3 +1,6 @@
+videosort-10.5:
+  - fixed crushes with series name with 2 numbers and a dash
+
 videosort-10.4:
   - added Channel 5 support
   - fix: dated episode is identified as series
