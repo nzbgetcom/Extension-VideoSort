@@ -149,6 +149,12 @@
     "NZBPO_SERIESFORMAT": "%Ext/%sn %y/Season %s/- %sn - S%0sE%0e - %en - %qss.%qf.%ext"
   },  
   {
+    "id": "series-10",
+    "INPUTFILE": "Real.Time.with.Bill.Maher.S23E27.1080p.AV1.10bit-MeGusta/Real.Time.with.Bill.Maher.S23E27.1080p.AV1.10bit-MeGusta.mkv",
+    "OUTPUTFILE": "/series/Mkv/Real Time With Bill Maher/Season 23/Real Time With Bill Maher - S23E27 - 1080p.mkv",
+    "NZBPO_SERIESFORMAT": "%Ext/%sn %y/Season %s/- %sn - S%0sE%0e - %en - %qss.%qf.%ext"
+  },
+  {
     "id": "dated-deprecated-t-1",
     "INPUTFILE": "The.Daily.Show.2013.06.27.Tom.Goldstein.HDTV.x264-FQM.mkv",
     "OUTPUTFILE": "/dated/2013-06/The Daily Show - 2013-6-27.mkv",
@@ -219,3 +225,4 @@
     "NZBPO_EPISODESEPARATOR": "-E"
   }
 ]
+
