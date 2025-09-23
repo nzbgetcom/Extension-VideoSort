@@ -101,7 +101,8 @@ Credits
 The script relies on python libraries:
 
 - [GuessIt 3.8.0](http://guessit.readthedocs.org) to extract information from file names and includes portions of code from [SABnzbd](https://sabnzbd.org/).
-    - [Patch 1](https://github.com/guessit-io/guessit/pull/799/commits/91b52758b24dac4944f21b5a04de830dd861689e) by [PDA-1](https://github.com/PDA-1) Added support for Channel 5 streaming service (My5)
+    - [Patch 1](https://github.com/nzbgetcom/Extension-VideoSort/pull/14) by [PDA-1](https://github.com/PDA-1) Added support for Channel 5 streaming service (My5)
+    - [Patch 2](https://github.com/nzbgetcom/Extension-VideoSort/pull/19) added support for A1 format by [PDA-1](https://github.com/PDA-1)
 - [BabelFish 0.6.0](https://github.com/Diaoul/babelfish)
 - [ReBulk 3.2.0](https://github.com/Toilal/rebulk/)
 - [dateutil 2.8.2](https://github.com/dateutil/dateutil)
