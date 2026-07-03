@@ -223,6 +223,18 @@
     "NZBPO_SERIESFORMAT": "%sn\\Season %0s\\%sn - S%0sE%0e - %en [%qss][%qf][%qrg]",
     "NZBPO_MULTIPLEEPISODES": "range",
     "NZBPO_EPISODESEPARATOR": "-E"
+  },
+  {
+    "id": "spec-char-jp",
+    "INPUTFILE": "進撃の巨人.S01E01.720p.BluRay.x264-SiNNERS.mkv",
+    "OUTPUTFILE": "/series/進撃の巨人/Season 1/進撃の巨人 - S01E01.mkv",
+    "NZBPO_SERIESFORMAT": "%sn/Season %s/%sn - S%0sE%0e.%ext"
+  },
+  {
+    "id": "spec-char-accents",
+    "INPUTFILE": "José.S01E01.720p.BluRay.x264-SiNNERS.mkv",
+    "OUTPUTFILE": "/series/José/Season 1/José - S01E01.mkv",
+    "NZBPO_SERIESFORMAT": "%sn/Season %s/%sn - S%0sE%0e.%ext"
   }
 ]
 
