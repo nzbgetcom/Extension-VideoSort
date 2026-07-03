@@ -17,8 +17,8 @@ jobs:
   tests:
     uses: nzbgetcom/nzbget-extensions/.github/workflows/python-tests.yml@main
     with:
-      python-versions: "3.6 3.7 3.8 3.9 3.10 3.11 3.12"
-      supported-python-versions: "3.8 3.9 3.10 3.11 3.12"
+      python-versions: "3.8 3.9 3.10 3.11 3.12 3.13 3.14"
+      supported-python-versions: "3.8 3.9 3.10 3.11 3.12 3.13 3.14"
       test-script: testsort.py
       debug: true
 

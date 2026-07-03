@@ -32,12 +32,7 @@ import re
 import shutil
 import guessit
 import difflib
-import locale
 
-try:
-    unicode
-except NameError:
-    unicode = str
 
 # Exit codes used by NZBGet
 POSTPROCESS_SUCCESS = 93
@@ -424,6 +419,8 @@ def get_titles(name, titleing=False):
     """
 
     # make valid filename
+    if isinstance(name, list):
+        name = ' '.join(name)
     title = re.sub(r"[\"\:\?\*\\\/\<\>\|]", " ", name)
 
     if titleing:
@@ -461,18 +458,8 @@ def get_titles(name, titleing=False):
 
 
 def titler(p):
-    """title() replacement
-    Python's title() fails with Latin-1, so use Unicode detour.
-    """
-    if isinstance(p, unicode):
-        return p.title()
-    elif gUTF:
-        try:
-            return p.decode("utf-8").title().encode("utf-8")
-        except:
-            return p.decode("latin-1", "replace").title().encode("latin-1", "replace")
-    else:
-        return p.decode("latin-1", "replace").title().encode("latin-1", "replace")
+    """Title-case a string, preserving Unicode characters."""
+    return p.title()
 
 
 def replace_word(input, one, two):
@@ -552,16 +539,6 @@ def strip_folders(path):
 
     return os.path.normpath("/".join([strip_all(x) for x in f]))
 
-
-gUTF = False
-try:
-    if sys.platform == "darwin":
-        gUTF = True
-    else:
-        gUTF = locale.getlocale()[1] == "UTF-8"
-except:
-    # Incorrect locale implementation, assume the worst
-    gUTF = False
 
 # END * From SABnzbd+ * END
 
@@ -955,11 +932,15 @@ def guess_info(filename):
         print("Guessing: %s" % guessfilename)
 
     guess = guessit.api.guessit(
-        unicode(guessfilename), {"allowed_languages": [], "allowed_countries": []}
+        guessfilename, {"allowed_languages": [], "allowed_countries": []}
     )
 
     if verbose:
         print(guess)
+
+    # workaround for titles returned as lists by guessit (e.g., RSS downloads)
+    if "title" in guess and isinstance(guess["title"], list):
+        guess["title"] = ' '.join(guess["title"])
 
     # workaround for titles starting with numbers (part 2)
     if pad_start_digits:
@@ -968,10 +949,6 @@ def guess_info(filename):
             guess["title"] = os.path.splitext(os.path.basename(guessfilename))[0][1:]
             if verbose:
                 print("use filename as title for recovery")
-
-    # workaround for titles with 2 numbers with a dash between them (which guessit has problems with)
-    if "title" in guess and isinstance(guess["title"], list):
-        guess["title"] = ' '.join(guess["title"])
     
     # fix some strange guessit guessing:
     # if guessit doesn't find a year in the file name it thinks it is episode,
