@@ -1,0 +1,198 @@
+{
+    "about": {
+        "message": "Sorts movies and tv shows.",
+        "description": "Short description shown in the extension manager table"
+    },
+    "description": {
+        "message": "This is a script for downloaded TV shows and movies. It uses scene-standard\nnaming conventions to match TV shows and movies and rename/move/sort/organize\nthem as you like.",
+        "description": "Full description of the extension shown in settings"
+    },
+    "requirements": {
+        "message": "This script requires Python 3.8.x and above to be installed on your system.",
+        "description": "System requirements displayed to the user"
+    },
+    "MoviesDir_displayName": {
+        "message": "MoviesDir",
+        "description": "Label for the MoviesDir option"
+    },
+    "MoviesDir_description": {
+        "message": "Destination directory for movies.\n\nThe option can be left empty to use global DestDir or CategoryX.DestDir\nas destination.",
+        "description": "Help text for the MoviesDir option"
+    },
+    "SeriesDir_displayName": {
+        "message": "SeriesDir",
+        "description": "Label for the SeriesDir option"
+    },
+    "SeriesDir_description": {
+        "message": "Destination directory for seasoned TV shows.\n\nThe option can be left empty to use global DestDir or CategoryX.DestDir\nas destination.",
+        "description": "Help text for the SeriesDir option"
+    },
+    "DatedDir_displayName": {
+        "message": "DatedDir",
+        "description": "Label for the DatedDir option"
+    },
+    "DatedDir_description": {
+        "message": "Destination directory for dated TV shows.\n\nThe option can be left empty to use global DestDir or CategoryX.DestDir\nas destination.",
+        "description": "Help text for the DatedDir option"
+    },
+    "OtherTvDir_displayName": {
+        "message": "OtherTvDir",
+        "description": "Label for the OtherTvDir option"
+    },
+    "OtherTvDir_description": {
+        "message": "Destination directory for other TV shows.\n\nThe option can be left empty to use global DestDir or CategoryX.DestDir\nas destination.",
+        "description": "Help text for the OtherTvDir option"
+    },
+    "TvCategories_displayName": {
+        "message": "TvCategories",
+        "description": "Label for the TvCategories option"
+    },
+    "TvCategories_description": {
+        "message": "List of TV categories.\n\nComma separated list of categories for TV. VideoSort automatically\ndistinguishes movies from series and dated TV shows. But it needs help\nto distinguish movies from other TV shows because they are named\nusing same conventions. If a download has associated category listed in\noption <TvCategories>, VideoSort uses this information.\n\nCategory names must match categories defined in NZBGet.",
+        "description": "Help text for the TvCategories option"
+    },
+    "VideoExtensions_displayName": {
+        "message": "VideoExtensions",
+        "description": "Label for the VideoExtensions option"
+    },
+    "VideoExtensions_description": {
+        "message": "File extensions for video files.\n\nOnly files with these extensions are processed. Extensions must\nbe separated with commas.\nExample=.mkv,.avi,.divx,.xvid,.mov,.wmv,.mp4,.mpg,.mpeg,.vob,.iso",
+        "description": "Help text for the VideoExtensions option"
+    },
+    "SatelliteExtensions_displayName": {
+        "message": "SatelliteExtensions",
+        "description": "Label for the SatelliteExtensions option"
+    },
+    "SatelliteExtensions_description": {
+        "message": "File extensions for satellite files.\n\nMove satellite files such as subtitles to the destination along with\nthe files they are related to. Extensions must be separated with commas.\nExample=.srt,.nfo",
+        "description": "Help text for the SatelliteExtensions option"
+    },
+    "MinSize_displayName": {
+        "message": "MinSize",
+        "description": "Label for the MinSize option"
+    },
+    "MinSize_description": {
+        "message": "Minimum video file size (Megabytes).\n\nSmaller files are ignored.",
+        "description": "Help text for the MinSize option"
+    },
+    "MoviesFormat_displayName": {
+        "message": "MoviesFormat",
+        "description": "Label for the MoviesFormat option"
+    },
+    "MoviesFormat_description": {
+        "message": "Formatting rules for movies.\n\nSpecifiers for movies:\n%t, %.t, %_t    - movie title with words separated with spaces, dots\n                  or underscores (case-adjusted);\n%tT, %t.T, %t_T - movie title (original letter case);\n%y              - year;\n%decade         - two-digits decade (90, 00, 10);\n%0decade        - four-digits decade (1990, 2000, 2010).\n%imdb           - IMDb ID;\n%cpimdb         - IMDb ID (formatted for CouchPotato);\n\nCommon specifiers (for movies, series and dated tv shows):\n%dn              - original directory name (nzb-name);\n%^dn, %.dn, %_dn - directory name with words separated with spaces, dots\n                   or underscores (case-adjusted);\n%^dN, %.dN, %_dN - directory name with words separated with spaces, dots\n                   or underscores (original letter case);\n%fn              - original filename;\n%^fn, %.fn, %_fn - filename with words separated with spaces, dots\n                   or underscores (case-adjusted);\n%^fN, %.fN, %_fN - filename with words separated with spaces, dots\n                   or underscores (original letter case);\n%cat, %.cat, %_cat - category with words separated with spaces, dots\n                  or underscores (case-adjusted);\n%cAt, %.cAt, %_cAt - category (original letter case);\n%ext            - file extension;\n%Ext            - file extension (case-adjusted);\n%qf             - video format (HDTV, Blu-ray, Web);\n%qss            - screen size (720p, 1080i);\n%qvc            - video codec (x264);\n%qac            - audio codec (DTS);\n%qah            - audio channels (5.1);\n%qrg            - release group;\n{{text}}        - uppercase the text;\n{TEXT}          - lowercase the text.",
+        "description": "Help text for the MoviesFormat option"
+    },
+    "SeriesFormat_displayName": {
+        "message": "SeriesFormat",
+        "description": "Label for the SeriesFormat option"
+    },
+    "SeriesFormat_description": {
+        "message": "Formatting rules for seasoned TV shows.\n\nSpecifiers:\n%sn, %s.n, %s_n - show name with words separated with spaces, dots\n                  or underscores (case-adjusted);\n%sN, %s.N, %s_N - show name (original letter case);\n%s              - season number (1, 2);\n%0s             - two-digits season number (01, 02);\n%e              - episode number (1, 2);\n%0e             - two-digits episode number (01, 02);\n%en, %e.n, %e_n - episode name (case-adjusted);\n%eN, %e.N, %e_N - episode name (original letter case);\n%y              - year;\n%decade         - two-digits decade (90, 00, 10);\n%0decade        - four-digits decade (1990, 2000, 2010).\n\nFor a list of common specifiers see option <MoviesFormat>.",
+        "description": "Help text for the SeriesFormat option"
+    },
+    "MultipleEpisodes_displayName": {
+        "message": "MultipleEpisodes",
+        "description": "Label for the MultipleEpisodes option"
+    },
+    "MultipleEpisodes_description": {
+        "message": "Multiple Episodes.\n\nThis option is used for seasoned TV shows when the video file includes multiple episodes. For example: the formatting\nstring \"S%0sE%0e\", combined with \"MultipleEpisode=list\" and \"EpisodeSeparator=E\" will result in a file named\n\"My.Show.S01E01E02E03\". \"MultipleEpisode=range\" and \"EpisodeSeparator=-E\" will result in a file named\n\"My.Show.S01E01-E03.mkv\". The \"range\" option is useful to follow the TV episode naming conventions of popular media\nmanagement software, such as Plex.",
+        "description": "Help text for the MultipleEpisodes option"
+    },
+    "EpisodeSeparator_displayName": {
+        "message": "EpisodeSeparator",
+        "description": "Label for the EpisodeSeparator option"
+    },
+    "EpisodeSeparator_description": {
+        "message": "Separator for multi episodes.\n\nThe option is used for seasoned TV shows when video file includes\nmultiple episodes, e. g. \"My.Show.S01E02-03.mkv\". The option defines\na character (or a string) which must be inserted between episode\nnumbers. For example, if \"EpisodeSeparator=E\", the specifier \"%0e\"\nwill expand to \"02E03\". Giving formatting string \"%sN - S%0sE%0e\" the\nresulting filename will be \"My Show - S01E02E03.mkv\".",
+        "description": "Help text for the EpisodeSeparator option"
+    },
+    "SeriesYear_displayName": {
+        "message": "SeriesYear",
+        "description": "Label for the SeriesYear option"
+    },
+    "SeriesYear_description": {
+        "message": "Treat year following title as part of title.\n\nFor seasoned TV shows: if year in the file name goes directly after\nshow name, it will be added to show name. This may be necessary for\nmedia players like XBMC, Boxee or Plex (or anyone using TheTVDB) to\nproperly index TV show.",
+        "description": "Help text for the SeriesYear option"
+    },
+    "DatedFormat_displayName": {
+        "message": "DatedFormat",
+        "description": "Label for the DatedFormat option"
+    },
+    "DatedFormat_description": {
+        "message": "Formatting rules for dated TV shows.\n\nSpecifiers:\n%sn, %s.n, %s_n - show name with words separated with spaces, dots\n                  or underscores (case-adjusted);\n%sN, %s.N, %s_N - show name (original letter case);\n%en, %e.n, %e_n - episode name (case-adjusted);\n%eN, %e.N, %e_N - episode name (original letter case);\n%y              - year;\n%decade         - two-digits decade (90, 00, 10);\n%0decade        - four-digits decade (1990, 2000, 2010).\n%m              - month (1-12);\n%0m             - two-digits month (01-12);\n%d              - day (1-31);\n%0d             - two-digits day (01-31).\n\nFor a list of common specifiers see option <MoviesFormat>.",
+        "description": "Help text for the DatedFormat option"
+    },
+    "OtherTvFormat_displayName": {
+        "message": "OtherTvFormat",
+        "description": "Label for the OtherTvFormat option"
+    },
+    "OtherTvFormat_description": {
+        "message": "Formatting rules for other TV shows.\n\nAll specifiers are same as in option <MoviesFormat>.",
+        "description": "Help text for the OtherTvFormat option"
+    },
+    "LowerWords_displayName": {
+        "message": "LowerWords",
+        "description": "Label for the LowerWords option"
+    },
+    "LowerWords_description": {
+        "message": "List of words to keep in lower case.\n\nThis option has effect on \"case-adjusted\"-specifiers.",
+        "description": "Help text for the LowerWords option"
+    },
+    "UpperWords_displayName": {
+        "message": "UpperWords",
+        "description": "Label for the UpperWords option"
+    },
+    "UpperWords_description": {
+        "message": "List of words to keep in upper case.\n\nThis option has effect on \"case-adjusted\"-specifiers.",
+        "description": "Help text for the UpperWords option"
+    },
+    "DNZBHeaders_displayName": {
+        "message": "DNZBHeaders",
+        "description": "Label for the DNZBHeaders option"
+    },
+    "DNZBHeaders_description": {
+        "message": "Use information from Direct-NZB headers.\n\nNZB-sites may provide extended information about videos,\nwhich is usually more confident than the information extracted\nfrom file names.",
+        "description": "Help text for the DNZBHeaders option"
+    },
+    "PreferNZBName_displayName": {
+        "message": "PreferNZBName",
+        "description": "Label for the PreferNZBName option"
+    },
+    "PreferNZBName_description": {
+        "message": "Use name of nzb-file instead of name of video file.\n\nGood indexer nzb-sites do renaming and cleanup of nzb-file\nnames making them a better choice to extract name information\nthan the original video file names.\n\nNOTE: If download contains more than one video file suitable\nfor renaming (having correct extension and bigger than <MinSize>)\nthis option is ignored and the names of video files are always used.",
+        "description": "Help text for the PreferNZBName option"
+    },
+    "Overwrite_displayName": {
+        "message": "Overwrite",
+        "description": "Label for the Overwrite option"
+    },
+    "Overwrite_description": {
+        "message": "Overwrite files at destination.\n\nIf not active the files are still moved into destination but\nunique suffixes are added at the end of file names, e.g. My.Show.(2).mkv.",
+        "description": "Help text for the Overwrite option"
+    },
+    "Cleanup_displayName": {
+        "message": "Cleanup",
+        "description": "Label for the Cleanup option"
+    },
+    "Cleanup_description": {
+        "message": "Delete download directory after renaming.\n\nIf after successful sorting all remaining files in the download directory\nare smaller than \"MinSize\" the directory with all files is removed. If no\nfiles could be processed, the directory remains untouched.",
+        "description": "Help text for the Cleanup option"
+    },
+    "Preview_displayName": {
+        "message": "Preview",
+        "description": "Label for the Preview option"
+    },
+    "Preview_description": {
+        "message": "Preview mode.\n\nWhen active no changes to file system are made but the destination\nfile names are logged. Useful to test formatting rules; to restart\nthe script use \"Post-Process-Again\" on history tab in NZBGet web-interface.",
+        "description": "Help text for the Preview option"
+    },
+    "Verbose_displayName": {
+        "message": "Verbose",
+        "description": "Label for the Verbose option"
+    },
+    "Verbose_description": {
+        "message": "Print more logging messages.\n\nFor debugging or if you need to report a bug.",
+        "description": "Help text for the Verbose option"
+    }
+}
