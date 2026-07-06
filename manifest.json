@@ -3,12 +3,12 @@
     "name": "VideoSort",
     "homepage": "https://github.com/nzbgetcom/Extension-VideoSort",
     "kind": "POST-PROCESSING",
-    "displayName": "Video Sort",
+    "displayName": "VideoSort",
     "version": "10.6",
     "nzbgetMinVersion": "23.0",
     "author": "Andrey Prygunkov",
     "license": "GNU",
-    "about": "Sorts movies and tv shows.",
+    "about": "Sorts movies and tv shows",
     "queueEvents": "",
     "requirements": [
         "This script requires Python 3.8.x and above to be installed on your system."
@@ -154,7 +154,7 @@
                 "%cAt, %.cAt, %_cAt - category (original letter case);",
                 "%ext            - file extension;",
                 "%Ext            - file extension (case-adjusted);",
-                "%qf             - video format (HTDV, Blu-ray, Web);",
+                "%qf             - video format (HDTV, Blu-ray, Web);",
                 "%qss            - screen size (720p, 1080i);",
                 "%qvc            - video codec (x264);",
                 "%qac            - audio codec (DTS);",
@@ -217,7 +217,7 @@
                 "",
                 "The option is used for seasoned TV shows when video file includes",
                 "multiple episodes, e. g. \"My.Show.S01E02-03.mkv\". The option defines",
-                "a character (or a string) which must be insterted between episode",
+                "a character (or a string) which must be inserted between episode",
                 "numbers. For example, if \"EpisodeSeparator=E\", the specifier \"%0e\"",
                 "will expand to \"02E03\". Giving formatting string \"%sN - S%0sE%0e\" the",
                 "resulting filename will be \"My Show - S01E02E03.mkv\"."
@@ -358,7 +358,7 @@
                 "Delete download directory after renaming.",
                 "",
                 "If after successful sorting all remaining files in the download directory",
-                "are smaller than \"MinSize\" the directory with all files is removed. If no.",
+                "are smaller than \"MinSize\" the directory with all files is removed. If no",
                 "files could be processed, the directory remains untouched."
             ],
             "select": [
@@ -374,7 +374,7 @@
                 "Preview mode.",
                 "",
                 "When active no changes to file system are made but the destination",
-                "file names are logged. Useful to test formating rules; to restart",
+                "file names are logged. Useful to test formatting rules; to restart",
                 "the script use \"Post-Process-Again\" on history tab in NZBGet web-interface."
             ],
             "select": [
