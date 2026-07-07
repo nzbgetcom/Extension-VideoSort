@@ -4,11 +4,11 @@
     "homepage": "https://github.com/nzbgetcom/Extension-VideoSort",
     "kind": "POST-PROCESSING",
     "displayName": "VideoSort",
-    "version": "10.6",
+    "version": "10.7",
     "nzbgetMinVersion": "23.0",
     "author": "Andrey Prygunkov",
     "license": "GNU",
-    "about": "Sorts movies and tv shows.",
+    "about": "Sorts movies and TV shows.",
     "queueEvents": "",
     "requirements": [
         "This script requires Python 3.8.x and above to be installed on your system."
