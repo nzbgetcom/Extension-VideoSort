@@ -1,14 +1,12 @@
 > **Note:** this repo is a fork of the original github [project](https://github.com/nzbget/VideoSort)
 > made by @hugbug.
 
-## NZBGet Versions
+## Requirements
 
-- release v23+ [v10.3](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v10.3)
-- legacy v22 [v9.0](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v9.0)
-
-> **Note:** this script works with Python 3.8.x and above versions.
-If you need Python 3.7.x and below support please use [v8.1](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v8.1) release.
-For Python 2.x support please use [v8](https://github.com/nzbgetcom/Extension-VideoSort/releases/tag/v8.0) release.
+- NZBGet v23+ and Python 3.8+
+- Legacy NZBGet v22: use v9.0 release
+- Python 3.7 or older: use v8.1 release
+- Python 2.x: use v8.0 release
 
 # VideoSort
 [Post-processing](https://nzbget.com/documentation/post-processing-scripts/) script for [NZBGet](https://nzbget.com).
@@ -38,7 +36,7 @@ VideoSort can organize:
 ## Installation
 
  - Download the newest version from [releases page](https://github.com/nzbgetcom/Extension-VideoSort/releases).
- - Unpack into pp-scripts directory. Your pp-scripts directory now should have folder "videosort" with subfolder "lib" and file "VideoSort.py";
+ - Unpack into pp-scripts directory. Your pp-scripts directory now should have folder "videosort" with subfolder "lib" and file "main.py";
  - Open settings tab in NZBGet web-interface and define settings for VideoSort;
  - Save changes and restart NZBGet.
 
@@ -85,7 +83,7 @@ These specifiers can be used with all three types of supported video files:
  - %fn - original filename;
  - %ext - file extension;
  - %Ext - file extension (case-adjusted);
- - %qf - video format (HTDV, Blu-ray, Web);
+ - %qf - video format (HDTV, Blu-ray, Web);
  - %qss - screen size (720p, 1080i);
  - %qvc - video codec (x264);
  - %qac - audio codec (DTS);
@@ -96,8 +94,7 @@ These specifiers can be used with all three types of supported video files:
  - {{text}} - uppercase the text;
  - {TEXT} - lowercase the text;
 
-Credits
--------
+## Credits
 The script relies on python libraries:
 
 - [GuessIt 3.8.0](http://guessit.readthedocs.org) to extract information from file names and includes portions of code from [SABnzbd](https://sabnzbd.org/).
